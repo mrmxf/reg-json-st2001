@@ -2,7 +2,9 @@
 
 _This repository is *public*._
 
-Rendered at [https://smpte.github.io/NAMEOFREPO/](https://smpte.github.io/NAMEOFREPO/).
+[Latest version Documentation](https://doc.smpte-doc.org/${repository_name}/main/).
+
+[Redline to latest published edition](https://doc.smpte-doc.org/${repository_name}/main/pub-rl.html).
 
 Please consult [CONTRIBUTING.md](./CONTRIBUTING.md), [CONFIDENTIALITY.md](./CONFIDENTIALITY.md), [LICENSE.md](./LICENSE.md) and
 [PATENTS.md](./PATENTS.md) for important notices.
