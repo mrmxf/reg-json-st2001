@@ -1,28 +1,209 @@
 <!doctype html>
 <html>
-  <head itemscope="itemscope" itemtype="http://smpte.org/standards/documents">
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script type="module" src="../tooling/smpte.js"></script>
-    <meta itemprop="pubType" content="ST" />
-    <meta itemprop="pubNumber" content="000" />
-    <meta itemprop="pubPart" content="00" />
-    <meta itemprop="pubState" content="draft" />
-    <meta itemprop="pubStage" content="WD" />
-    <meta itemprop="pubConfidential" content="yes" />
-    <meta itemprop="pubTC" content="XX" />
-    <meta itemprop="pubSuiteTitle" content="HTML Pub" />
-    <!-- <meta itemprop="pubDateTime" content="20XX-XX-XX" /> -->
-    <!-- <meta itemprop="pubRevisionOf" content="SMPTE ST XXXX-Y:ZZZZ" /> -->
 
-    <title>Template (Base HTML Repo with Tooling)</title>
-  </head>
-  <body>
+<head itemscope="itemscope" itemtype="http://smpte.org/standards/documents">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script type="module" src="../tooling/smpte.js"></script>
+  <meta itemprop="pubType" content="ST" />
+  <meta itemprop="pubNumber" content="2001" />
+  <meta itemprop="pubPart" content="1" />
+  <meta itemprop="pubState" content="draft" />
+  <meta itemprop="pubStage" content="WD" />
+  <meta itemprop="pubConfidential" content="yes" />
+  <meta itemprop="pubTC" content="31FS" />
+  <meta itemprop="pubSuiteTitle" content="2001" />
+  <!-- <meta itemprop="pubDateTime" content="20XX-XX-XX" /> -->
+  <!-- <meta itemprop="pubRevisionOf" content="SMPTE ST XXXX-Y:ZZZZ" /> -->
 
-    <section id="sec-scope">
-      <p>This is the scope. See <a>https://doc.smpte-doc.org/html-pub/main/</a> for documentation on how to use this template.</p>
+  <title>ST 2001-1 RegJson update</title>
+</head>
+
+<body>
+
+  <section id="sec-scope">
+    <p>This standard defines an XML representation for data that is registered in the SMPTE metadata registers (SMPTE ST
+      395, SMPTE ST 335, SMPTE ST 2003 and SMPTE ST 400). The standard is applicable for data that can be described by a
+      Reg-XML data model.</p>
+
+    <p>The specification defines the items that describe a Reg-XML model, namely classes, properties and types. The
+      specification defines data mapping rules for representing the data in XML.</p>
+    <p>The specification defines informative model mapping rules that describe how to map a Reg-XML data model onto W3C
+      XML Schemas (XSDs) for validation.</p>
+
+    <p>This specification provides a normative XSD for the representation of Reg-XML data models as Meta Dictionary XML
+      documents.</p>
+
+  </section>
+  <section id="sec-normative-references">
+    <ul>
+      <li><cite id="bib-st-298">SMPTE ST 298:2009</cite>, Universal Labels for Unique Identification of Digital Data
+        SMPTE ST 330:2011, Unique
+        Material Identifier (UMID)</li>
+      <li><cite id="bib-st-335">SMPTE ST 335:2012</cite>, Metadata Element Dictionary Structure SMPTE ST 395:2014,
+        Metadata Groups Register</li>
+      <li><cite id="bib-st-400">SMPTE ST 400:2012</cite>, SMPTE Labels Structure SMPTE ST 2003:2012, Types Dictionary
+        Structure</li>
+      <li><cite id="bib-st-2029">SMPTE ST 2029:2009</cite>, Uniform Resource Names for SMPTE Resources</li>
+      <li><cite id="bib-xml">Extensible Markup Language (XML) 1.0</cite> (Third Edition), W3C Recommendation, 4 February
+        2004,
+        http://www.w3.org/TR/2004/REC-xml-20040204/</li>
+      <li><cite id="bib-xml-ns">Namespaces in XML 1.0</cite> (Third Edition), W3C Recommendation, 8 December 2009,
+        http://www.w3.org/TR/REC-xml-names/</li>
+      <li><cite id="bib-xsd-1">XML Schema Part 1</cite>: Structures Second Edition, W3C Recommendation, 28 October 2004,
+        http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/</li>
+      <li><cite id="bib-xsd-2">XML Schema Part 2</cite>: Datatypes Second Edition, W3C Recommendation, 28 October 2004,
+        http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/</li>
+      <li><cite id="bib-xlink">XML Linking Language (XLink) Version 1.1</cite>, W3C Recommendation, 6 May 2010,
+        http://www.w3.org/TR/xlink11/</li>
+      <li><cite id="bib-xpath">XML Path Language</cite> (XPath) Version 1.0, W3C Recommendation, 16 November 1999,
+        http://www.w3.org/TR/xpath/</li>
+      <li><cite id="bib-rfc-1738">IETF RFC 1738</cite>
+        � Uniform Resource Locators (URL), December 1994 IETF RFC 2141 � URN Syntax, May 1997</li>
+      <li><cite id="bib-rfc-2396">IETF RFC 2396</cite> � Uniform Resource Identifiers (URI): Generic Syntax, August 1998
+        IETF RFC 3061 � A URN
+        Namespace of Object Identifiers, February 2001</li>
+      <li><cite id="bib-rfc-4122">IETF RFC 4122</cite> � A Universally Unique Identifier (UUID) URN Namespace, July 2005
+      </li>
+    </ul>
+  </section>
+
+  <section id="sec-terms-and-definitions">
+    <section id="sec-notation">
+      <h3>Acronyms and Terms</h3>
+      <dl id="terms-int-defs">
+        <dt>AUID</dt>
+        <dd>A 16-byte UID that shall contain a UL or a UUID. If the value is a UUID, it shall be stored such that the
+          top
+          and bottom 8 bytes of the UUID are swapped. For UUIDs, this makes the most significant bit of the first byte a
+          '1' and thus creates a UID value that is always distinct from a UL.</dd>
+        <dt>Namespace</dt>
+        <dd>XML Namespace URI Uniform Resource Identifier URL Uniform Resource Locator URN Uniform Resource Name</dd>
+        <dt>UUID</dt>
+        <dd>Universally Unique IDentifier</dd>
+        <dt>XML</dt>
+        <dd>eXtensible Markup Language</dd>
+        <dt>XSDL</dt>
+        <dd>XML Schema Definition Language � the W3C XML schema language used to define a class of XML documents</dd>
+        <dt>XSD</dt>
+        <dd>XML Schema Definition � an XML document containing a schema expressed in XSDL</dd>
+        <dt>XLink</dt>
+        <dd>XML Linking Language - allows elements to be inserted into XML documents in order to create and describe
+          links
+          between resources</dd>
+        <dt>XPath</dt>
+        <dd>XML Path Language - a language for addressing parts of an XML document</dd>
+
+      </dl>
     </section>
+    <section id="sec-notation">
+      <h3>Notation</h3>
+      <p>A property X owned by class Y is shown using the notation Y::X, e.g. Preface::FileLastModified refers to the
+        FileLastModified property in the Preface class.</p>
+      <p>The mapping rules use the notation {xxx} to indicate that the value xxx must be filled in when applying the
+        mapping rule, e.g. the name of the type must be filled in the XSD definition <simpleType name=”{name}”>.</p>
+      <p>The mapping rules use the notation […]? for things that are only required when certain conditions are met, e.g.
+        [reg:uid=”{id}”]? means that the reg:uid attribute is only required when the conditions given in the notes are
+        met.</p>
+      <p>The mapping rules use the Namespace prefix reg to refer to the baseline namespace, cx for an example company X
+        namespace representing user/vendor extensions and this for adhoc extensions not explicitly assigned to a
+        namespace. Applications are not required to use these Namespace prefixes</p>
+    </section>
+  </section>
 
-  </body>
+  <section id="sec-prologue">
+    <h2>Prologue (Informative)</h2>
+    <p>Reg-XML has two distinct components:</p>
+    <ul>
+      <li>the specification of data models that correspond to definitions in the SMPTE metadata registers (SMPTE ST 395,
+        SMPTE ST 335, SMPTE ST 2003 and SMPTE ST 400) and the normative source of those definitions;</li>
+      <li>the representation of data defined by the data models using XML.</li>
+    </ul>
+    <p>The XML representation consists of an XML document, called a Reg-XML document, and zero or more files or
+      resources containing stream data. The stream data files are referenced from within the Reg-XML document. The
+      Reg-XML document and the referenced stream data are together called a Reg-XML file group. A fragment of a Reg-XML
+      document, called a Reg-XML fragment, may be included in another context.</p>
+    <p>A Reg-XML file group is intended for use directly as a data interchange format between systems, or it may be
+      converted to or from some other data representation for the purpose of data interchange between systems. For
+      example, a Reg-XML file group may be converted to or from an AAF or MXF file.</p>
+    <p>SMPTE ST 2001 is a multipart standard, with this part defining the rules for specifying a Reg-XML data model and
+      its use. SMPTE 2001-1 is independent of any particular Reg-XML data model.</p>
+    <p>The structure of this document is as follows:</p>
+    <ul>
+      Section 6 provides an informative description of a Reg-XML data model and defines the use of a Reg-XML data model.
+      The Reg-XML data model is used as input for both the data and model mapping rules and is normatively specified by
+      the meta dictionary XML schema in Annex A.
+      <li>Section 7 defines the association between a Reg-XML document and Reg-XML data models that contain baseline and
+        extension definitions for the data the document contains. This association is achieved through the use of XML
+        Namespaces.</li>
+      <li>Section 8 defines the data mapping rules for representing data as a Reg-XML file group. The data mapping rules
+        are described independently from any XML schema language.</li>
+      <li>Section 9 defines the informative model mapping rules for generating W3C XML Schemas (XSDs) from a Reg-XML
+      </li>
+    </ul>
+  </section>
+
+  <section id="sec-data-models">
+    <h2>Reg-XML Data Models (Informative)</h2>
+
+    <section id="sec-reg-xml-data-model">
+      <h3>Definition of a Reg-XML Data Model</h3>
+
+      <p>A Reg-XML data model is a collection of class, property and type definitions.</p>
+      <p>A Reg-XML data model is described using one or more Schemes, with a Meta Dictionary used to define each Scheme.
+        The XML schema in Annex A provides the normative specification of a Reg-XML data model, with additional
+        annotations provided in this section.</p>
+      <p>Class, property and type definitions share the following attributes:</p>
+      <ul>
+        <li>Identification: an AUID that uniquely identifies the definitions.</li>
+        <li>Symbol: a string that uniquely identifies the definition in the context of a Scheme.</li>
+        <li>Description: describes the definition.</li>
+        <li>Name: a descriptive name for the definition.</li>
+      </ul>
+
+      <section id="meta-dictionary">
+        <h4>Meta Dictionary</h4>
+
+        <p>A Meta Dictionary is a collection of class, property and type definitions that share a Scheme. It is
+          described using the following attributes:</p>
+        <ul>
+          <li>SchemeID: an AUID that uniquely identifies the Meta Dictionary.</li>
+          <li>SchemeURI: a URI that uniquely identifies the Meta Dictionary.</li>
+          <li>Preferred Prefix: the preferred prefix to use in an XML document.</li>
+          <li>Description: describes the contents of the Meta Dictionary.</li>
+        </ul>
+      </section>
+
+    </section>
+  </section>
+
+  <section id="sec-reg-xml-docs">
+    <h2>Reg-XML Documents and Meta Dictionaries</h2>
+  </section>
+
+  <section id="sec-data-mapping-rules">
+    <h2>Data Mapping Rules</h2>
+  </section>
+
+  <section id="sec-model-mapping-rules">
+    <h2>Model Mapping Rules (Informative)</h2>
+  </section>
+
+  <section class="annex" id="sec-extension-meta-dictionary">
+    <h2>Extension Meta Dictionary Structure</h2>
+  </section>
+
+  <section class="annex" id="sec-extension-meta-dictionary">
+    <h2>Extension Meta Dictionary Structure</h2>
+  </section>
+  <section class="annex informative" id="sec-schema-baseline">
+    <h2>Schema for Baseline Meta Dictionaries (Informative)</h2>
+  </section>
+
+  <section class="annex" id="sec-deriving-data-models">
+    <h2>Deriving Data Models from SMPTE Metadata Registers</h2>
+  </section>
+</body>
+
 </html>
