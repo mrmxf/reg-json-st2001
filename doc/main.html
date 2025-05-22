@@ -184,6 +184,25 @@
 
   <section id="sec-data-mapping-rules">
     <h2>Data Mapping Rules</h2>
+    <section id="sec-data-types">
+      <h3>Data Types</h3>
+
+      <section id="sec-type-auid">
+        <h3>AUID</h3>
+        <p>The AUID data type shall be either a SMPTE UL or a UUID.</p>
+        <p>Values that have type SMPTE UL shall be represented using the SMPTE ST 2029 UL URN notation and component
+          values shall be represented in big endian byte order. For example:</p>
+        <p>urn:smpte:ul:060e2b34.04010103.04010202.01011100</p>
+        <p>AUID values that are UUIDs shall be represented using the IETF RFC 4122 UUID URN notation. For example:</p>
+        <p>urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</p>
+      </section>
+
+      <section id="sec-type-auid">
+        <h3>Byte Order</h3>
+        <p>The byte order type is used for the global attribute reg:byteOrder and the Preface::ByteOrder property. The allowed values are: �BigEndian� and �LittleEndian�.</p>
+      </section>
+
+    </section>
   </section>
 
   <section id="sec-model-mapping-rules">
